@@ -1,4 +1,4 @@
-package coupon.web.app;
+package coupon.web.app.services;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -8,7 +8,7 @@ import javax.ws.rs.core.MediaType;
 /**
  * Root resource (exposed at "myresource" path)
  */
-@Path("myresource")
+@Path("login")
 public class MyResource {
 
     /**
@@ -20,6 +20,6 @@ public class MyResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String getIt() {
-        return "Got it!";
+        return "hello!";
     }
 }
