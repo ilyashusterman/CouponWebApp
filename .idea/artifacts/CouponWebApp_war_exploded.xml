@@ -29,9 +29,6 @@
           <element id="library" level="project" name="Maven: org.eclipse.persistence:org.eclipse.persistence.core:2.6.0" />
           <element id="library" level="project" name="Maven: org.eclipse.persistence:org.eclipse.persistence.asm:2.6.0" />
           <element id="library" level="project" name="Maven: org.glassfish:javax.json:1.0.4" />
-          <element id="library" level="project" name="CouponProjectJhonBryce" />
-          <element id="library" level="project" name="derbyclient" />
-          <element id="library" level="project" name="Java EE 6-Java EE 6" />
         </element>
       </element>
       <element id="directory" name="META-INF">
