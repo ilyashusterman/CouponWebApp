@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="CouponWebApp:war exploded">
+  <artifact type="exploded-war" build-on-make="true" name="CouponWebApp:war exploded">
     <output-path>$PROJECT_DIR$/target/CouponWebApp</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
@@ -31,6 +31,7 @@
           <element id="library" level="project" name="Maven: org.glassfish:javax.json:1.0.4" />
           <element id="library" level="project" name="CouponProjectJhonBryce" />
           <element id="library" level="project" name="derbyclient" />
+          <element id="library" level="project" name="Java EE 6-Java EE 6" />
         </element>
       </element>
       <element id="directory" name="META-INF">

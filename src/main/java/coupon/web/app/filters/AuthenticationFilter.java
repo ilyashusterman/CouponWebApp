@@ -80,7 +80,7 @@ public class AuthenticationFilter implements Filter {
 
     }
     private void redirectPage(HttpServletResponse response,HttpServletRequest request) throws IOException {
-        String url="http://"+request.getServletContext().getVirtualServerName()+
+        String url="http://localhost"+
                 ":"+request.getServerPort()+request.getServletContext().getContextPath();
         response.sendRedirect(response.encodeRedirectURL(url));
     }
