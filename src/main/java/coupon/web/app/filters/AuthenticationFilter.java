@@ -1,5 +1,8 @@
 package coupon.web.app.filters;
 
+import coupon.web.app.service.Login;
+import facade.CouponClientFacade;
+
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -10,8 +13,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.couponsystem.facadedao.CouponClientFacade;
-import coupon.web.app.services.Login;
+
 
 
 public class AuthenticationFilter implements Filter {
@@ -48,7 +50,6 @@ public class AuthenticationFilter implements Filter {
                         if (uriCheckCoupon("cust", uriCurrentPath)){
                             redirectPage(response,request);
                             return ;
-
                         }
                         break;
                     case "facade.AdminFacade":
