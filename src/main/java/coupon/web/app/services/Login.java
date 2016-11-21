@@ -20,7 +20,7 @@ import javax.ws.rs.core.Response;
 public class Login
     {
 
-            private CouponSystem couponSys;
+            public static CouponSystem couponSys;
     /**
      * Method handling HTTP GET requests. The returned object will be sent
      * to the client as "text/plain" media type.
