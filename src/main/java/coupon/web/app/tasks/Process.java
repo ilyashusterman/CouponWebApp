@@ -1,4 +1,4 @@
-package coupon.web.app.task;
+package coupon.web.app.tasks;
 
 
 public class Process {

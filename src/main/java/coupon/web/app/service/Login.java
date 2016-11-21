@@ -2,7 +2,9 @@ package coupon.web.app.service;
 
 
 import coupon.web.app.exception.CouponSystemExceptionResource;
-import coupon.web.app.task.TrayIconTask;
+import coupon.web.app.tasks.*;
+import coupon.web.app.tasks.Process;
+
 import facade.ClientType;
 import facade.CouponClientFacade;
 import system.CouponSystem;
@@ -35,8 +37,8 @@ public class Login {
 	
     @PostConstruct
     public void init() throws Exception {
-    	
-    	TrayIconTask.execute(new coupon.web.app.task.Process("CouponSystem", "ON", couponSys+" "));
+
+    	TrayIconTask.getInstance().execute(new Process("CouponSystem", "ON", couponSys+" "));
     	if(!didStartDataBase){
     		Class.forName("org.apache.derby.jdbc.ClientDriver");
     		couponSys=CouponSystem.getInstance();

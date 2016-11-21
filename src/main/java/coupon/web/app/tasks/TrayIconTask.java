@@ -1,24 +1,32 @@
-package coupon.web.app.task;
+package coupon.web.app.tasks;
  
 /*
  * TrayIconDemo.java
  */
-
+ 
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.net.URL;
+import java.util.logging.Level;
+import javax.swing.*;
 import exceptions.CouponSystemException;
 import system.CouponSystem;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.net.URL;
-import java.util.logging.Level;
- 
 public class TrayIconTask {
-	
-    public static void execute(final Process process) {
+
+   private static TrayIconTask tray;
+    private TrayIconTask(){
+        super();
+    }
+    public static TrayIconTask getInstance(){
+        if(tray==null){
+            tray= new TrayIconTask();
+        }
+        return tray;
+    }
+
+    public void execute(final Process process) {
         /* Use an appropriate Look and Feel */
    
         try {
@@ -44,15 +52,19 @@ public class TrayIconTask {
         });
     }
      
-    private static void createAndShowGUI(final Process process) {
+    private void createAndShowGUI(final Process process) {
         //Check the SystemTray support
         if (!SystemTray.isSupported()) {
             System.out.println("SystemTray is not supported");
             return;
         }
         final PopupMenu popup = new PopupMenu();
+     //   Icon icon=new ImageIcon(TrayIconTask.createImage("images/trayImage.gif", "tray icon"));
+     //  Image image= iconToImage(icon);
         final TrayIcon trayIcon =
+                //TrayIconTask.createImage("images/trayImage.gif", "tray icon")
                 new TrayIcon(createImage("images/trayImage.gif", "tray icon"));
+
         final SystemTray tray = SystemTray.getSystemTray();
         trayIcon.addActionListener(new ActionListener() {
 			
@@ -183,15 +195,33 @@ public class TrayIconTask {
     }
      
     //Obtain the image URL
-    protected static Image createImage(String path, String description) {
-        URL imageURL = TrayIconTask.class.getResource(path);
-         
+    protected Image createImage(String path, String description) {
+        URL imageURL = getClass().getClassLoader().getResource(path);
         if (imageURL == null) {
             System.err.println("Resource not found: " + path);
             java.util.logging.Logger.getLogger(ServerSystemTray.class.getName()).log(Level.WARNING, "Resource not found: " + path);;
             return null;
         } else {
             return (new ImageIcon(imageURL, description)).getImage();
+        }
+    }
+
+    public static Image iconToImage(Icon icon) {
+        if (icon instanceof ImageIcon) {
+            return ((ImageIcon)icon).getImage();
+        }
+        else {
+            int w = icon.getIconWidth();
+            int h = icon.getIconHeight();
+            GraphicsEnvironment ge =
+                    GraphicsEnvironment.getLocalGraphicsEnvironment();
+            GraphicsDevice gd = ge.getDefaultScreenDevice();
+            GraphicsConfiguration gc = gd.getDefaultConfiguration();
+            BufferedImage image = gc.createCompatibleImage(w, h);
+            Graphics2D g = image.createGraphics();
+            icon.paintIcon(null, g, 0, 0);
+            g.dispose();
+            return image;
         }
     }
 }

@@ -1,12 +1,18 @@
-package coupon.web.app.task;
+package coupon.web.app.tasks;
+
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Image;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 
 import exceptions.CouponSystemException;
 import gui.login;
 import system.CouponSystem;
-
-import javax.swing.*;
-import javax.swing.table.DefaultTableCellRenderer;
-import java.awt.*;
 
 /**
  *
@@ -61,7 +67,7 @@ public class ServerSystemTray extends javax.swing.JFrame {
 
         //TrayIconTask.createImage("images/91.gif", "System Server")
         //	this.setIconImage(TrayIconTask.createImage("images/trayImage.gif", "tray icon"));
-        Icon icon=new ImageIcon(TrayIconTask.createImage("images/on.gif", "on"));
+        Icon icon=new ImageIcon(TrayIconTask.getInstance().createImage("images/on.gif", "on"));
        // ImageIcon iconOn=new ImageIcon(getClass().getResource("images/on.gif"));
        if (process==null){
     	   process=new Process("Undefined", "ON", "Undefined");
@@ -168,7 +174,7 @@ public class ServerSystemTray extends javax.swing.JFrame {
     }                                            
 
     /**
-     * @param args the command line arguments
+     * @param process the command line arguments
      */
     public static void execute(final Process process) {
         /* Set the Nimbus look and feel */
@@ -247,7 +253,7 @@ public class ServerSystemTray extends javax.swing.JFrame {
             if (value instanceof Icon)
             {
                 label.setText(null);
-                Icon icon=new ImageIcon(TrayIconTask.createImage("images/on.gif", "on"));
+                Icon icon=new ImageIcon(TrayIconTask.getInstance().createImage("images/on.gif", "on"));
                 System.out.println("Inside icon cell ");
                 label.setIcon(icon);
             }

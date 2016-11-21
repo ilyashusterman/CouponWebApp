@@ -16,7 +16,7 @@ import java.util.Collection;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class TestJson{
-	
+
 	@GET
 	@Path("/companies")
 	public Collection<Company>getAllCompanies(@Context HttpServletRequest req) throws Exception{
@@ -35,12 +35,13 @@ public class TestJson{
 		Login.couponSys.customerDAO.removeCustomer(customerId);
 	}
 
-	@PUT
-	@Path("/customers/{customerId}/{password}")
-	public void updateCustomer(long customerId, String password) throws DAOException {
-		Login.couponSys.customerDAO.updateCustomer(customerId, password);
-	}
-	
+//	@PUT
+//	@Path("/customers/{customerId}/{password}")
+//	public long updateCustomer(long customerId, String password) throws DAOException {
+//		Login.couponSys.customerDAO.updateCustomer(customerId, password);
+//		return customerId;
+//	}
+
 	@PUT
 	@Path("/customers/{customerId}")
 	public Customer updateCustomer(Customer customer) throws Exception {

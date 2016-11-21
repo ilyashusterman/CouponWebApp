@@ -8,9 +8,9 @@
     <init-param>
       <param-name>jersey.config.server.provider.packages</param-name>
       <param-value>
-        coupon.web.app.services;
+        coupon.web.app.service;
         coupon.web.app.filters;
-        coupon.web.app.exceptions;
+        coupon.web.app.exception;
         coupon.web.app.tests;
         servicebeans
       </param-value>
