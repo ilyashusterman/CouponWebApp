@@ -37,10 +37,9 @@ public class Login {
 	
     @PostConstruct
     public void init() throws Exception {
-
-    	TrayIconTask.getInstance().execute(new Process("CouponSystem", "ON", couponSys+" "));
     	if(!didStartDataBase){
-    		Class.forName("org.apache.derby.jdbc.ClientDriver");
+			TrayIconTask.getInstance().execute(new Process("CouponSystem", "ON", couponSys+" "));
+			Class.forName("org.apache.derby.jdbc.ClientDriver");
     		couponSys=CouponSystem.getInstance();
     		new TestDB(CouponSystem.getInstance());
     		didStartDataBase=true;
@@ -55,11 +54,12 @@ public class Login {
 		CouponClientFacade facade;
 		ClientType theType = null;
 		Token token=null;
+		System.out.println("User is " + user);
 		if (user.equals(null)) {
 			return Response.status(Response.Status.UNAUTHORIZED).build();
 		}
 		
-		if ((theType = ClientType.valueOf((user.getClientType()))) == null) {
+		if ((theType = ClientType.valueOf((user.getClientType().toUpperCase()))) == null) {
 			return Response.status(Response.Status.UNAUTHORIZED).build();
 		}
 

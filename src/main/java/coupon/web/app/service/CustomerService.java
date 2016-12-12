@@ -43,7 +43,7 @@ public class CustomerService {
 
 	@GET
 	@Path("/coupons/type/{type}")
-	public Collection<Coupon> getAllPurchasedCouponsByType(@Context HttpServletRequest request,@PathParam("couponType")CouponType couponType) throws Exception{
+	public Collection<Coupon> getAllPurchasedCouponsByType(@Context HttpServletRequest request,@PathParam("type")CouponType couponType) throws Exception{
 		return ((CustomerFacade)Login.getFacade(request,this.clientType)).getAllPurchasedCouponsByType(couponType);
 	}
 
