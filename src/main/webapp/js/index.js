@@ -6,3 +6,4 @@ $('.login').on('submit', function(e) {
   e.preventDefault();
   $('.login').removeClass('focused').addClass('loading');
 });
+

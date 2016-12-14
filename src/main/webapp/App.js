@@ -10,7 +10,8 @@ class App extends React.Component{
     super();
       this.state = {
         didLoggedIn: false,
-          errorMessage: ''
+          errorMessage: '',
+          clientType: ''
       };
        this.handleLogin = this.handleLogin.bind(this);
     //  this.loginSuccess = this.loginSuccess.bind(this);
@@ -32,7 +33,9 @@ class App extends React.Component{
             .then(function (response) {
                 console.log(response);
              //   this.loginSuccess();
-                self.setState({didLoggedIn: true});
+                self.setState({didLoggedIn: true,
+                clientType: clientType
+                });
             })
             .catch(function (error) {
                 console.log(error.response.data);
@@ -58,10 +61,11 @@ class App extends React.Component{
       const errorMessage = this.state.errorMessage;
 
       let renderElement = null;
-      if (!isLoggedIn) {
+      if (isLoggedIn) { // if (!isLoggedIn) {
           renderElement = <LoginForm loginUser={this.handleLogin.bind(this)} />;
       } else {
-          renderElement = <Dashboard onClick={this.handleLogoutClick}  />;
+          renderElement = <Dashboard onClick={this.handleLogoutClick}  clientType="admin"/>;
+          // clientType={this.state.clientType}
       }
       let renderError= null;
       if(errorMessage == ''){
@@ -69,7 +73,7 @@ class App extends React.Component{
       }
       else{
           renderError=<div className="alert alert-danger" >{errorMessage}
-          <a href="http://localhost:8080/CouponWebAppPhase2/">Please try again</a>
+          <a href="http://localhost:8080/CouponWebAppPhase2/"> Please try again</a>
           </div>
       }
     return (

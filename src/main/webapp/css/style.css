@@ -1,20 +1,20 @@
-* {
+.login-login {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-body {
-  background: #333;
-  font: 100%/1 "Helvetica Neue", Arial, sans-serif;
+.main-login {
+  background: #323b49;
+  /*font: 100%/1 "Helvetica Neue", Arial, sans-serif;*/
 }
 
 .login {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin: -10rem 0 0 -10rem;
-  width: 20rem;
-  height: 20rem;
+  margin: -15rem 0 0 -15rem;
+  width: 30rem;
+  height: 30rem;
   padding: 20px;
   background: #fff;
   border-radius: 5px;
@@ -28,7 +28,7 @@ body {
   transform: rotate(-90deg);
 }
 .login.loading > .login-header {
-  width: 20rem;
+  width: 30rem;
 }
 .login.loading > .login-header > .text {
   display: none;
@@ -42,8 +42,8 @@ body {
   left: 0;
   top: 0;
   z-index: 1;
-  width: 20rem;
-  height: 20rem;
+  width: 30rem;
+  height: 30rem;
   background: orange;
   transition: width 0.5s ease-in-out;
 }
@@ -53,17 +53,17 @@ body {
   height: 100%;
   font-size: 5rem;
   text-align: center;
-  line-height: 20rem;
+  line-height: 30rem;
   color: #fff;
   transition: all 0.5s ease-in-out;
 }
 .login-header > .loader {
   display: none;
   position: absolute;
-  left: 5rem;
-  top: 5rem;
-  width: 10rem;
-  height: 10rem;
+  left: 7.5rem;
+  top: 7.5rem;
+  width: 15rem;
+  height: 15rem;
   border: 2px solid #fff;
   border-radius: 50%;
   animation: loading 2s linear infinite;

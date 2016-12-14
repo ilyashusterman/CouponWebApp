@@ -1,4 +1,5 @@
 import React from 'react';
+import {doneLoading} from './actions/actions.js';
 
 class LoginForm extends React.Component {
 
@@ -10,10 +11,15 @@ class LoginForm extends React.Component {
             clientType: ''
         };
     }
-
+    componentDidMount() {
+        doneLoading();
+    }
     render() {
+        let values= ["admin", "company", "customer"];
         return (
-            <div className="login">
+
+            <div>
+            <div id="login" className="login">
 
                 <header className="login-header"><span className="text">LOGIN</span><span className="loader"></span></header>
             <form className="login-form" onSubmit={this._handleSubmit.bind(this)}>
@@ -24,7 +30,11 @@ class LoginForm extends React.Component {
                 <input  className="login-input" type="password" placeholder="Password" ref={c => this.password = c} onChange={this._getCharacterCount.bind(this)}/>
                 <p>{this.state.password.length} letters</p>
 
-                    <input className="login-input" type="text" placeholder="clientType " ref={c => this.clientType = c} onChange={this._getCharacterCount.bind(this)}/>
+                <select  className="login-input" type="text" placeholder="clientType " ref={c => this.clientType = c} onChange={this._getCharacterCount.bind(this)} >
+                    <option value={values[0]}>{values[0]}</option>
+                    <option value={values[1]}>{values[1]}</option>
+                    <option value={values[2]}>{values[2]}</option>
+                </select>
                     <p>{this.state.clientType.length} letters</p>
 
 
@@ -33,6 +43,7 @@ class LoginForm extends React.Component {
                 </button>
 
             </form>
+            </div>
             </div>
         );
     }
@@ -55,7 +66,7 @@ class LoginForm extends React.Component {
 
         this.props.loginUser(this.username.value, this.password.value, this.clientType.value);
 
-        this.props
+
         this.username.value = '';
         this.password.value = '';
         this.clientType.value = '';

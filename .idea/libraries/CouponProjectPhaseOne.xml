@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="CouponProjectPhaseOne">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/CouponProjectPhaseOne.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/CouponProjectPhaseOne.jar!/" />
+    </SOURCES>
+  </library>
+</component>
