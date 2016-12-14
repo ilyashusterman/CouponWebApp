@@ -49,10 +49,13 @@ class App extends React.Component{
         axios.get('webapi/logout')
             .then(function (response) {
                 console.log(response);
-                self.setState({didLoggedIn: false});
+                self.setState({didLoggedIn: false
+                });
             })
             .catch(function (error) {
                 console.log(error.response.data);
+                self.setState({didLoggedIn: false
+                });
             });
     }
 
@@ -61,10 +64,10 @@ class App extends React.Component{
       const errorMessage = this.state.errorMessage;
 
       let renderElement = null;
-      if (isLoggedIn) { // if (!isLoggedIn) {
+      if (!isLoggedIn) { // if (!isLoggedIn) {
           renderElement = <LoginForm loginUser={this.handleLogin.bind(this)} />;
       } else {
-          renderElement = <Dashboard onClick={this.handleLogoutClick}  clientType="admin"/>;
+          renderElement = <Dashboard onLogoutClick={this.handleLogoutClick}  clientType="admin"/>;
           // clientType={this.state.clientType}
       }
       let renderError= null;

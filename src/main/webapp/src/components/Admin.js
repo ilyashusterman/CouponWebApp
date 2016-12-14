@@ -11,7 +11,7 @@ class Admin extends React.Component {
     render() {
         return (
             <div>
-                <h1>hello from admin</h1>
+                <h1>Admin Coupon</h1>
                 <Menu />
             </div>
         );

@@ -8,8 +8,8 @@ class Menu extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>this is menu Component</h1>
+            <div >
+                    <h1>hello buddy admin</h1>
             </div>
         );
     }

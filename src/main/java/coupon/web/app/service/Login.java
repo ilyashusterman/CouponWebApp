@@ -2,11 +2,13 @@ package coupon.web.app.service;
 
 
 import coupon.web.app.exception.CouponSystemExceptionResource;
+import coupon.web.app.logger.AppLogger;
 import coupon.web.app.tasks.*;
 import coupon.web.app.tasks.Process;
 
 import facade.ClientType;
 import facade.CouponClientFacade;
+import org.apache.log4j.Logger;
 import system.CouponSystem;
 import test.TestDB;
 
@@ -26,6 +28,7 @@ import java.net.URISyntaxException;
 public class Login {
 	public volatile static CouponSystem couponSys;
 	private volatile static boolean didStartDataBase;
+	final static Logger logger = AppLogger.getLogger(Login.class);
 	@Context 
 	private HttpServletResponse response;
 	
@@ -37,12 +40,15 @@ public class Login {
 	
     @PostConstruct
     public void init() throws Exception {
+
     	if(!didStartDataBase){
+    		logger.info("The application has been initiated!");
 			TrayIconTask.getInstance().execute(new Process("CouponSystem", "ON", couponSys+" "));
 			Class.forName("org.apache.derby.jdbc.ClientDriver");
     		couponSys=CouponSystem.getInstance();
     		new TestDB(CouponSystem.getInstance());
     		didStartDataBase=true;
+			logger.info("The application initiation has been completed!");
     	}
 
     }
